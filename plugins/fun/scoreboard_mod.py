@@ -18,6 +18,8 @@ def send_input(inp, sender, channel):
             sb.remPoints(inp.split()[2],inp.split()[3])
         if inp.split()[1] == "get":
             send_message_function(channel,sb.getPoints(inp.split()[2]))
+        if inp.split()[1] == "board":
+            send_message_function(channel,sb.exportToPastebin())
 
 ## Returns a description of the module including the name at the top
 def desc():

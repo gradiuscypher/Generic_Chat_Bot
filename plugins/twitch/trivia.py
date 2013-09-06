@@ -4,6 +4,7 @@ import sqlite3
 import sys
 import libs.load_temp as temp
 from libs.permissions import Permissions
+from libs.scoreboard import Scoreboard
 
 db = sqlite3.connect('plugins/twitch/questions.sqlite')
 c = db.cursor()
@@ -11,6 +12,7 @@ name = "trivia.py"
 t_file = "plugins/twitch/trivia.tmp"
 data = temp.load_temp(t_file)
 perm = Permissions()
+sb = Scoreboard()
 
 def buildup(send_message_callback):
     print "This function is run at buildup of function."
@@ -57,6 +59,7 @@ def trivia_answer(channel,message,sender):
             data["asked"] = "false"
             temp.save_temp(t_file, data)
             send_message_function(channel,"You are correct " + sender + "!")
+            sb.addPoints(sender, 10)
 
             if data["loop"] == "true" and int(data["loop_count"]) == 0:
                 data["loop"] = "false"

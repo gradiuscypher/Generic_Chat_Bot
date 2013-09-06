@@ -1,4 +1,4 @@
 from connectors.irc import IrcBot
 
-irc = IrcBot("configs/irc_config.cfg")
+irc = IrcBot("configs/twitch.cfg")
 irc.bot_start()

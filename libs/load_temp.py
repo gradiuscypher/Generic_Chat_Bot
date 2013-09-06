@@ -12,4 +12,3 @@ def save_temp(f_name, d):
     f = open(f_name, 'w')
     for key, value in d.iteritems():
         f.write(key + ":" + value + "\n")
-    print "wrote keys to temp"
